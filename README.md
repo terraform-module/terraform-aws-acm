@@ -1,18 +1,34 @@
 # Terraform AWS ACM
 
-Terraform module blueprint
+Terraform module which creates ACM certificates and validates them using Route53 DNS.
 
 ## Usage example
 
 Here's the gist of using it directly from github.
 
 ```hcl
+module acm {
+  source = "git@github.com:terraform-module/terraform-aws-acm.git"
+
+  domain_name = "example.com"
+  zone_id     = "Z0FK2F3K10ACF0"
+
+  validation_method = "DNS"
+
+  subject_alternative_names = [
+      "*.example.com"
+  ]
+
+  tags = {}
+}
 
 ```
 
 ## Assumptions
 
 ## Available features
+
+Will not allow to add new SANS due to bug that shoulb de fixed [here](https://github.com/terraform-providers/terraform-provider-aws/pull/8708)
 
 ## Module Variables
 
@@ -26,11 +42,11 @@ Here's the gist of using it directly from github.
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version 
+release                        Create release version
 ```
 <!-- END makefile-doc -->
 
