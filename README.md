@@ -23,7 +23,7 @@ Here's the gist of using it directly from github.
 ```hcl
 module acm {
   source  = "terraform-module/acm/aws"
-  version = "2.1.0"
+  version = "~> 2"
 
   domain_name = "example.com"
   zone_id     = "Z0FK2F3K10ACF0"
@@ -85,11 +85,11 @@ Will not allow to add new SANS due to bug that shoulb de fixed [here](https://gi
 
 <!-- START makefile-doc -->
 ```
-$ make help 
+$ make help
 hooks                          Commit hooks setup
 validate                       Validate with pre-commit hooks
 changelog                      Update changelog
-release                        Create release version 
+release                        Create release version
 ```
 <!-- END makefile-doc -->
 
