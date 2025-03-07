@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       # https://github.com/hashicorp/setup-terraform
-      - uses: hashicorp/setup-terraform@v3
+      - uses: hashicorp/setup-terraform@v3.1.2
 
       - name: Cache terraform folder
         uses: actions/cache@v3
@@ -44,7 +44,7 @@ jobs:
         with:
           path: ~/.tflint.d/plugins
           key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
-      - uses: terraform-linters/setup-tflint@v4
+      - uses: terraform-linters/setup-tflint@v4.1.1
         name: setup tflint
       - name: init tflint
         run: tflint --init --config .tflint.hcl
